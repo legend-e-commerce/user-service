@@ -10,4 +10,4 @@ eureka:
     register-with-eureka: true # eureka server에 해당 서비스 등록
     fetch-registry: true # eureka server로부터 해당 서비스 정보를 주기적으로 기져온다는 설정
     service-url:
-      defaultZone: http://127.0.0.1:8761/eureka # eureka server의 위치, 해당 eureka server에 서비스 정보를 등록
+      defaultZone: http://127.0.0.1:8761/eureka # eureka server의 위치. 해당 eureka server에 서비스 정보를 등록
