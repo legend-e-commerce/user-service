@@ -1,11 +1,14 @@
 server:
-  port: 9001
+  port: 0 # random port
 
 spring:
   application:
     name: user-service
 
 eureka:
+  instance:
+    # 랜덤포트로 인해 여러 서비스가 실행 중이라면 대시보드에서 구분이 안되기 때문에 instance-id에 random값을 주어 구분이 가능하도록 설정
+    instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
   client:
     register-with-eureka: true # eureka server에 해당 서비스 등록
     fetch-registry: true # eureka server로부터 해당 서비스 정보를 주기적으로 기져온다는 설정
