@@ -6,27 +6,27 @@ import com.example.user_service.vo.Greeting;
 import com.example.user_service.vo.RequestUser;
 import com.example.user_service.vo.ResponseUser;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/")
 public class UserController {
 
     private final Greeting greeting;
     private final UserService userService;
+    private final Environment env;
 
-    public UserController(Greeting greeting, UserService userService) {
-        this.greeting = greeting;
-        this.userService = userService;
-    }
-
-    @GetMapping("/health_check")
+    @GetMapping("/user-service/health_check")
     public String status() {
-        return "건강해요";
+        return String.format("건강해요 PORT: %s", env.getProperty("local.server.port"));
     }
 
     @GetMapping("/welcome")
