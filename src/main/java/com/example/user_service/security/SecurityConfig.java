@@ -35,9 +35,9 @@ public class SecurityConfig {
 
         http.csrf().disable();
         http.headers().frameOptions().disable();
-        http.authorizeHttpRequests(authorize -> authorize
-                .anyRequest().authenticated()
-        );
+//        http.authorizeHttpRequests(authorize -> authorize
+//                .anyRequest().authenticated()
+//        );
         http.authenticationManager(authenticationManager);
         http.addFilter(getAuthenticationFilter(authenticationManager));
         return http.build();

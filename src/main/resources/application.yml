@@ -20,6 +20,10 @@ spring:
         web-allow-others: true
       path: /h2-console
 
+  output:
+    ansi:
+      enabled: always
+
 eureka:
   instance:
     # 랜덤포트로 인해 여러 서비스가 실행 중이라면 대시보드에서 구분이 안되기 때문에 instance-id에 random값을 주어 구분이 가능하도록 설정
@@ -32,3 +36,4 @@ eureka:
 
 greeting:
   message: welcome to the simple e commerce
+
