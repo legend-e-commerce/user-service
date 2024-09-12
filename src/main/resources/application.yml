@@ -24,6 +24,13 @@ spring:
     ansi:
       enabled: always
 
+  # http://localhost:8888의 config server 에서 환경설정 정보를 받아옴
+  cloud:
+    config:
+      name: ecommerce
+  config:
+    import: optional:configserver:http://localhost:8888
+
 eureka:
   instance:
     # 랜덤포트로 인해 여러 서비스가 실행 중이라면 대시보드에서 구분이 안되기 때문에 instance-id에 random값을 주어 구분이 가능하도록 설정
@@ -37,7 +44,7 @@ eureka:
 greeting:
   message: welcome to the simple e commerce
 
-token:
-  # 24h
-  expiration_time: 86400000
-  secret: aksdjwoieflskdjfilsjdkflweikdfsdfjsldkjfwlkdjfskdjlfk
+#token:
+#  # 24h
+#  expiration_time: 86400000
+#  secret: aksdjwoieflskdjfilsjdkflweikdfsdfjsldkjfwlkdjfskdjlfk
