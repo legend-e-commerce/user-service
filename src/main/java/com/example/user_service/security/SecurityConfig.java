@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -33,11 +34,11 @@ public class SecurityConfig {
         authenticationManagerBuilder.userDetailsService(userService).passwordEncoder(passwordEncoder);
         AuthenticationManager authenticationManager = authenticationManagerBuilder.build();
 
-        http.csrf().disable();
+        http.csrf(AbstractHttpConfigurer::disable);
         http.headers().frameOptions().disable();
-//        http.authorizeHttpRequests(authorize -> authorize
-//                .anyRequest().authenticated()
-//        );
+        http.authorizeHttpRequests(authorize -> authorize
+                .requestMatchers("/**").permitAll()
+        );
         http.authenticationManager(authenticationManager);
         http.addFilter(getAuthenticationFilter(authenticationManager));
         return http.build();

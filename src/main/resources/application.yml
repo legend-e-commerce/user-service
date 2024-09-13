@@ -44,6 +44,12 @@ eureka:
 greeting:
   message: welcome to the simple e commerce
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans
+
 #token:
 #  # 24h
 #  expiration_time: 86400000
