@@ -22,7 +22,7 @@ public class FeignErrorDecoder implements ErrorDecoder {
                 if (methodKey.contains("getOrders")) {
                     return new ResponseStatusException(
                             HttpStatus.valueOf(response.status()),
-                            env.getProperty("order-service.exception.order_is_empty")
+                            env.getProperty("order_service.exception.order_is_empty")
                     );
                 }
             }
