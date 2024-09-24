@@ -60,7 +60,12 @@ management:
       exposure:
         include: refresh, health, beans, busrefresh
 
+logging:
+  level:
+    com.example.user_service.client: DEBUG
+
 #token:
 #  # 24h
 #  expiration_time: 86400000
 #  secret: aksdjwoieflskdjfilsjdkflweikdfsdfjsldkjfwlkdjfskdjlfk
+
