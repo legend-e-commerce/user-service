@@ -31,6 +31,9 @@ dependencies {
 	// resilience4j
 	implementation 'org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j'
 
+	// prometheus
+	implementation 'io.micrometer:micrometer-registry-prometheus'
+
 	// zipkin + micrometer
 	implementation 'io.micrometer:micrometer-observation'
 	implementation 'io.micrometer:micrometer-tracing-bridge-brave'

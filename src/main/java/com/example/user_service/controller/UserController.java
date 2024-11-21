@@ -6,6 +6,7 @@ import com.example.user_service.service.UserService;
 import com.example.user_service.vo.Greeting;
 import com.example.user_service.vo.RequestUser;
 import com.example.user_service.vo.ResponseUser;
+import io.micrometer.core.annotation.Timed;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -27,6 +28,7 @@ public class UserController {
     private final Environment env;
 
     @GetMapping("/health_check")
+    @Timed(value = "users.status", longTask = true)
     public String status() {
         return String.format(
                 "건강해요 PORT: %s, server port: %s, token secret: %s, token expiration time: %s",
@@ -36,6 +38,7 @@ public class UserController {
     }
 
     @GetMapping("/welcome")
+    @Timed(value = "users.welcome", longTask = true)
     public String welcome() {
         return greeting.getMessage();
     }
