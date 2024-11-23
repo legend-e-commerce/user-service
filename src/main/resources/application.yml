@@ -78,9 +78,3 @@ logging:
     com.example.user_service.client: DEBUG
   pattern:
     correlation: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
-
-#token:
-#  # 24h
-#  expiration_time: 86400000
-#  secret: aksdjwoieflskdjfilsjdkflweikdfsdfjsldkjfwlkdjfskdjlfk
-
